@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
 
 struct btreenode{
     struct btreenode *left, *right;
@@ -72,6 +73,25 @@ void postOrderWithRecursion(struct btreenode* root){
     }
 }
 
+bool search(struct btreenode* root, int searchItem){
+    struct btreenode* temp = root;
+    if (root == NULL){
+        return false;
+    }
+    while (temp != NULL){
+        if (temp -> val == searchItem){
+            return true;
+        }
+        if (searchItem < temp -> val){
+            temp = temp -> left;
+        }
+        else if (searchItem >= temp -> val){
+            temp = temp -> right;
+        }
+    }
+    return false;
+}
+
 int main(){
     struct btreenode* root = NULL;
     insertWithRecursion(&root,55);
@@ -92,6 +112,9 @@ int main(){
     printf("Postorder traversal: ");
     postOrderWithRecursion(root);
     printf("\n");
+
+    bool ans = search(root,35);
+    printf("%s", ans ? "true" : "false");
 
     return 0;
 }
