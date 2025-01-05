@@ -51,8 +51,16 @@ void insertWithRecursion(struct btreenode** root, int val){
 void inOrderWithRecursion(struct btreenode* root){
     if (root != NULL){
         inOrderWithRecursion(root -> left);
-        printf("%d\n", root -> val);
+        printf("%d\t", root -> val);
         inOrderWithRecursion(root -> right);
+    }
+}
+
+void preOrderWithRecursion(struct btreenode* root){
+    if (root != NULL){
+        printf("%d\t",root -> val);
+        preOrderWithRecursion(root -> left);
+        preOrderWithRecursion(root -> right);
     }
 }
 
@@ -64,6 +72,14 @@ int main(){
     insertWithRecursion(&root,35);
     insertWithRecursion(&root,15);
     insertWithRecursion(&root,5);
+
+    printf("Inorder traversal: ");
     inOrderWithRecursion(root);
+    printf("\n");
+
+    printf("Preorder traversal: ");
+    preOrderWithRecursion(root);
+    printf("\n");
+
     return 0;
 }
