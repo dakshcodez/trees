@@ -74,19 +74,15 @@ void postOrderWithRecursion(struct btreenode* root){
 }
 
 bool search(struct btreenode* root, int searchItem){
-    struct btreenode* temp = root;
-    if (root == NULL){
-        return false;
-    }
-    while (temp != NULL){
-        if (temp -> val == searchItem){
+    while (root != NULL){
+        if (root -> val == searchItem){
             return true;
         }
-        if (searchItem < temp -> val){
-            temp = temp -> left;
+        if (searchItem < root -> val){
+            root = root -> left;
         }
-        else if (searchItem >= temp -> val){
-            temp = temp -> right;
+        else if (searchItem >= root -> val){
+            root = root -> right;
         }
     }
     return false;
