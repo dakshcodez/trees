@@ -11,6 +11,7 @@ struct btreenode* createNewNode(int val){
     struct btreenode* newNode = (struct btreenode*)malloc(sizeof(struct btreenode));
     newNode -> left = newNode -> right = NULL;
     newNode -> val = val;
+    return newNode;
 }
 
 void insertWithoutRecursion(struct btreenode** root, int val){
